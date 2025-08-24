@@ -1,3 +1,5 @@
+
+```sql
 -- Count the custromer base based on custromer type to identify current. custromer perferences and sort them in desending order. 
 
  
@@ -308,7 +310,7 @@ ON SD."C_ID" = CT."C_ID"
 INNER JOIN "Status" as ST
 ON ST."SH_ID" = SD."SH_ID"
 WHERE ST."Current_Status" = 'NOT DELIVERED'
-
+```
 
 
 
