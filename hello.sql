@@ -1,5 +1,5 @@
 
-``` sql
+
 -- Count the custromer base based on custromer type to identify current. custromer perferences and sort them in desending order. 
 
  
@@ -8,7 +8,7 @@ SELECT COUNT ("Customer"."C_ID") as coustromer_count,
         FROM "Customer"
         GROUP BY "Customer"."C_TYPE"
         ORDER BY "coustromer_count" DESC  ;
-```
+
 
         
  SELECT * FROM "Payment_Details"
