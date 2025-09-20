@@ -15,7 +15,6 @@ The dataset contains supermarket transactions with details such as branch, produ
 - **Power BI** → Dashboard and visualization
 
 ---
-
 ## 📂 Project Structure
 
 ### 1. KPIs
@@ -24,14 +23,20 @@ The dataset contains supermarket transactions with details such as branch, produ
 SELECT SUM("Unit_price" * "Quantity") AS Total_Revenue
 FROM "SuperMarketAnalysis";
 
--- Average Order Value
-SELECT SUM("Unit_price" * "Quantity") / COUNT(DISTINCT "Invoice_ID") AS Avg_Order_Value
-FROM "SuperMarketAnalysis";
+--- Total Orders
+SELECT COUNT(DISTINCT "Invoice_ID") as Total_Order 
+FROM "SuperMarketAnalysis"
 
--- Average Items per Order
-SELECT SUM("Quantity") * 1.0 / COUNT(DISTINCT "Invoice_ID") AS Avg_Items_per_Order
-FROM "SuperMarketAnalysis";
+-- AVG items per Order 
+SELECT SUM("Quantity") * 1.0 / COUNT(DISTINCT "Invoice_ID") as Age_Items_per_order 
+FROM "SuperMarketAnalysis"
 ```
+## Insight 
+- Total revenue =  307587.37
+- Total Order = 1000
+- Customers buy = 5 items per order.
+
+
 ###  2. Product Analysis
 ```sql
 -- Top 5 Product Lines by Revenue
@@ -41,35 +46,36 @@ FROM "SuperMarketAnalysis"
 GROUP by "Product_line"
 ORDER by "Total_Revenue" DESC
 LIMIT 5 
-
--- Bottom 5 Product Lines by Revenue
-SELECT "Product_line" ,
-		SUM ("total_sale") as "Total_Revenue"
-FROM "SuperMarketAnalysis"
-GROUP by "Product_line"
-ORDER by "Total_Revenue" ASC
-LIMIT 5 
-
--- Top 5 Branches by Sales
-SELECT "Branch" ,
-		SUM ("total_sale") as "Total_Revenue"
-FROM "SuperMarketAnalysis"
-GROUP by "Branch"
-ORDER by "Total_Revenue" DESC
-LIMIT 5 
-
-
--- Top 5 Cities by Sales
-SELECT "City" ,
-		SUM ("total_sale") as "Total_Revenue"
-FROM "SuperMarketAnalysis"
-GROUP by "City"
-ORDER by "Total_Revenue" DESC
-LIMIT 5 
-
--- AVG items per Order 
-SELECT SUM("Quantity") * 1.0 / COUNT(DISTINCT "Invoice_ID") as Age_Items_per_order 
-FROM "SuperMarketAnalysis"
 ```
+## Insight 
+Food & Spots and travel  generates the highest revenue , followed by  Eletronic , Fashion Accessories and Hom and lifestyle.
 
+### 3. Customer & Payment Analysis
+```sql
+--Customer segmentation (high/Low spender)
+SELECT "Customer_type",
+AVG("total_sale") as Age_spender
+FROM "SuperMarketAnalysis"
+GROUP by "Customer_type"
 
+SELECT "Payment" , COUNT(*) as Num_transaction , SUM("Unit_price" * "Quantity") as Revenue
+FROM "SuperMarketAnalysis"
+GROUP by "Payment"
+ORDER by 3 DESC
+
+```
+## Insight 
+- Menber spend more than Nomal customer.
+- Cash is the most used payment method.
+
+### 4. Time Analysis 
+``` sql
+--Peak Sales Hours
+SELECT EXTRACT(HOUR FROM "Time"::time) AS Hour,
+       SUM("Unit_price" * "Quantity") AS Sale
+FROM "SuperMarketAnalysis"
+GROUP BY Hour
+ORDER BY Sale DESC;
+```
+## Insight 
+Peak housr are seven o'clock in the evening and one o'clock in the afternoon.
