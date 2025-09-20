@@ -32,3 +32,44 @@ FROM "SuperMarketAnalysis";
 SELECT SUM("Quantity") * 1.0 / COUNT(DISTINCT "Invoice_ID") AS Avg_Items_per_Order
 FROM "SuperMarketAnalysis";
 ```
+###  2. Product Analysis
+```sql
+-- Top 5 Product Lines by Revenue
+SELECT "Product_line" ,
+		SUM ("total_sale") as "Total_Revenue"
+FROM "SuperMarketAnalysis"
+GROUP by "Product_line"
+ORDER by "Total_Revenue" DESC
+LIMIT 5 
+
+-- Bottom 5 Product Lines by Revenue
+SELECT "Product_line" ,
+		SUM ("total_sale") as "Total_Revenue"
+FROM "SuperMarketAnalysis"
+GROUP by "Product_line"
+ORDER by "Total_Revenue" ASC
+LIMIT 5 
+
+-- Top 5 Branches by Sales
+SELECT "Branch" ,
+		SUM ("total_sale") as "Total_Revenue"
+FROM "SuperMarketAnalysis"
+GROUP by "Branch"
+ORDER by "Total_Revenue" DESC
+LIMIT 5 
+
+
+-- Top 5 Cities by Sales
+SELECT "City" ,
+		SUM ("total_sale") as "Total_Revenue"
+FROM "SuperMarketAnalysis"
+GROUP by "City"
+ORDER by "Total_Revenue" DESC
+LIMIT 5 
+
+-- AVG items per Order 
+SELECT SUM("Quantity") * 1.0 / COUNT(DISTINCT "Invoice_ID") as Age_Items_per_order 
+FROM "SuperMarketAnalysis"
+```
+
+
