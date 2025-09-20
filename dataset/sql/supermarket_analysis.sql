@@ -14,13 +14,6 @@ FROM "SuperMarketAnalysis"
 GROUP by "Branch" 
 ORDER by Total_sales DESC
 
---Top 5 Product Lines
-SELECT "Product_line" , ROUND(CAST(SUM("Unit_price" * "Quantity")AS NUMERIC), 2) as Revenue 
-FROM "SuperMarketAnalysis"
-GROUP by "Product_line"
-order by Revenue DESC 
-LIMIT 5 
-
 
 -- Sales by Payment Method
 SELECT "Payment" , COUNT(*) as Num_transaction , SUM("Unit_price" * "Quantity") as Revenue
@@ -49,11 +42,6 @@ FROM "SuperMarketAnalysis"
 GROUP BY Month
 ORDER BY Month;
 
---Sales by Customer Type
-SELECT "Customer_type", SUM("Unit_price" * "Quantity") as Total_sale 
-FROM "SuperMarketAnalysis"
-GROUP by "Customer_type"
-
 -- % of sale by Products 
 ALTER TABLE "SuperMarketAnalysis"
 add COLUMN  Total_sale NUMERIC
@@ -77,7 +65,9 @@ SELECT "Customer_type",
 FROM "SuperMarketAnalysis"
 GROUP by "Customer_type"
 
+	
 -  Top & Bottom Analysis
+	
 -- Top 5 Product Lines by Revenue
 SELECT "Product_line" ,
 		SUM ("total_sale") as "Total_Revenue"
@@ -101,7 +91,6 @@ FROM "SuperMarketAnalysis"
 GROUP by "Branch"
 ORDER by "Total_Revenue" DESC
 LIMIT 5 
-
 
 -- Top 5 Cities by Sales
 SELECT "City" ,
