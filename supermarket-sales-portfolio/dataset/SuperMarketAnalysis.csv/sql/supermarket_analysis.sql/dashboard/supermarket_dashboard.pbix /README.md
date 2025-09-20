@@ -1,4 +1,4 @@
-# 🛒 Supermarket Sales Analysis (SQL + Power BI)
+#  Supermarket Sales Analysis (SQL + Power BI)
 
 ##  Overview
 This project analyzes the **Supermarket Sales Dataset (Myanmar)** using **SQL** and visualizes insights in **Power BI**.  
@@ -13,4 +13,44 @@ The dataset contains supermarket transactions with details such as branch, produ
 ---
 
 ##  Project Structure
+
+
+---
+
+## 🛠 Tools Used
+- **SQL (PostgreSQL)** → Data extraction and transformation
+- **Power BI** → Dashboard and visualization
+- **GitHub** → Version control and portfolio hosting
+
+---
+
+## 📊 SQL Analysis
+
+### 1. KPIs
+```sql
+-- Total Revenue
+SELECT SUM("Unit_price" * "Quantity") AS Total_Revenue
+FROM "SuperMarketAnalysis";
+
+-- Average Order Value
+SELECT SUM("Unit_price" * "Quantity") / COUNT(DISTINCT "Invoice_ID") AS Avg_Order_Value
+FROM "SuperMarketAnalysis";
+
+-- Average Items per Order
+SELECT SUM("Quantity") * 1.0 / COUNT(DISTINCT "Invoice_ID") AS Avg_Items_per_Order
+FROM "SuperMarketAnalysis";
+
+
+### 2. Product Analysis
+
+-- Sales by Customer Type
+SELECT "Customer_type", SUM("Unit_price" * "Quantity") AS Total_Sales
+FROM "SuperMarketAnalysis"
+GROUP BY "Customer_type";
+
+-- Sales by Customer Type
+SELECT "Customer_type", SUM("Unit_price" * "Quantity") AS Total_Sales
+FROM "SuperMarketAnalysis"
+GROUP BY "Customer_type";
+
 
