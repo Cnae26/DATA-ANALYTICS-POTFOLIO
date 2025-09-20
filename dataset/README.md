@@ -30,4 +30,5 @@ FROM "SuperMarketAnalysis";
 
 -- Average Items per Order
 SELECT SUM("Quantity") * 1.0 / COUNT(DISTINCT "Invoice_ID") AS Avg_Items_per_Order
-FROM "SuperMarketAnalysis"; ```
+FROM "SuperMarketAnalysis";
+```
