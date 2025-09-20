@@ -48,7 +48,7 @@ ORDER by "Total_Revenue" DESC
 LIMIT 5 
 ```
 ## Insight 
-Food & Spots and travel  generates the highest revenue , followed by  Eletronic , Fashion Accessories and Hom and lifestyle.
+- Food & Spots and travel  generates the highest revenue , followed by  Eletronic , Fashion Accessories and Hom and lifestyle.
 
 ### 3. Customer & Payment Analysis
 ```sql
@@ -78,4 +78,4 @@ GROUP BY Hour
 ORDER BY Sale DESC;
 ```
 ## Insight 
-Peak housr are seven o'clock in the evening and one o'clock in the afternoon.
+- Peak housr are seven o'clock in the evening and one o'clock in the afternoon.
