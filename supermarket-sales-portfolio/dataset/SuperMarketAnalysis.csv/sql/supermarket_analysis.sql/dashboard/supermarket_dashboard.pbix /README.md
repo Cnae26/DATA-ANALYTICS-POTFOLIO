@@ -38,11 +38,12 @@ FROM "SuperMarketAnalysis";
 
 -- Average Items per Order
 SELECT SUM("Quantity") * 1.0 / COUNT(DISTINCT "Invoice_ID") AS Avg_Items_per_Order
-FROM "SuperMarketAnalysis";
+FROM "SuperMarketAnalysis"; ```
+
 
 
 ### 2. Product Analysis
-
+```sql
 -- Sales by Customer Type
 SELECT "Customer_type", SUM("Unit_price" * "Quantity") AS Total_Sales
 FROM "SuperMarketAnalysis"
@@ -51,6 +52,6 @@ GROUP BY "Customer_type";
 -- Sales by Customer Type
 SELECT "Customer_type", SUM("Unit_price" * "Quantity") AS Total_Sales
 FROM "SuperMarketAnalysis"
-GROUP BY "Customer_type";
+GROUP BY "Customer_type"; ```
 
 
